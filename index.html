@@ -16,21 +16,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     
     <script src="script.js">
-    const settings = {
-	"async": true,
-	"crossDomain": true,
-	"url": "https://pokemon-go1.p.rapidapi.com/pokemon_stats.json",
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "9bd560b55cmshabdd97d151794c8p1d13d8jsn3f8ad9dc2fe0",
-		"x-rapidapi-host": "pokemon-go1.p.rapidapi.com"
-	}
-};
+ var queryURL = "https://api.pokemontcg.io/v1/cards?subtype=Basic";
+ $.ajax({
+      url: "https://api.pokemontcg.io/v1/cards?subtype=Basic",
+      method: "GET"
+    }).then(function(response) {
 
-$.ajax(settings).done(function (response) {
-	console.log(response);
-});
-
+      // Printing the entire object to console
+      console.log(response);
+    })
 </script>
 </body>
 
