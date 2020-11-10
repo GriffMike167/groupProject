@@ -10,22 +10,77 @@
 </head>
 
 <body>
-
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <form id="poke-form">
+      <label for="poke-input">Choose Your Pokemon</label>
+      <input type="text" id="poke-input"><br>
+      <input id="select-poke" type="submit" value="POKE-E-GO!">
+    </form>
+  
+    <div class="example-container" id="poke-div">
+      <div class="example-row">
+        <div class="example-content-main">Main content</div>
+        <div class="example-content-secondary">Secondary content</div>
+      </div>
+    </div>
+    <div id="poke-div"></div>
+  
+  </body>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    function searchPokemon(poke) {
     
-    <script src="script.js">
- var queryURL = "https://api.pokemontcg.io/v1/cards?subtype=Basic";
- $.ajax({
-      url: "https://api.pokemontcg.io/v1/cards?subtype=Basic",
-      method: "GET"
-    }).then(function(response) {
+      let queryURL = "https://api.pokemontcg.io/v1/cards?name=" + poke;
+      let queryURL2 = "https://pokeapi.co/api/v2/pokemon/" + poke;
+      $.ajax({
+        url: queryURL,
+        method: "GET", headers: {"Count": 1000},
+      }).then(function(response) {
+          console.log(response);
+  
+        
+        let pokeName = $("<h1>").text(response.cards[0].name);
+          console.log(response.cards[0].name);
+        let pokeURL = $("<img>").attr("src", response.cards[0].imageUrl);
+          console.log("src", response.cards[0].imageUrl);
+        let pokeMaker = $("<h2>").text(response.cards[0].artist);
+          console.log(response.cards[0].artist);
+        let pokeDex = $("<h2>").text(response.cards[0].nationalPokedexNumber);
+          console.log(response.cards[0].nationalPokedexNumber);
+        let howRare = $("<h2>").text(response.cards[0].rarity);
+          console.log(response.cards[0].rarity);
+        let pokeSeries = $("<h3>").text(response.cards[0].series);
+          console.log(response.cards[0].series);
+        let pokeSet = $("<h3>").text(response.cards[0].set);
+          console.log(response.cards[0].set);
 
-      // Printing the entire object to console
-      console.log(response);
+          
+  
+        
+        $("poke-div").empty();
+        $("#poke-div").append(pokeURL, pokeName, pokeMaker, pokeDex, howRare, pokeSeries, pokeSet);
+      })
+      $.ajax({
+        url: queryURL2,
+        method: "GET", headers: {"Count": 1000},
+      }).then(function(response) {
+        console.log(response.sprites.front_default)
+        let pokeSprite = $("<img>").attr("src", response.sprites.front_default);
+        $("poke-div").empty();
+        $("#poke-div").append(pokeSprite)
     })
-</script>
-</body>
+  }
+     $("#select-poke").on("click", function(event) {
+          event.preventDefault();
+      
+      let inputPoke = $("#poke-input").val().trim();
+  
+      
+      searchPokemon(inputPoke);
+    });
+  </script>
+  
+  </html>
+  
 
 </html>
