@@ -11,76 +11,111 @@
 
 <body>
     <form id="poke-form">
-      <label for="poke-input">Choose Your Pokemon</label>
-      <input type="text" id="poke-input"><br>
-      <input id="select-poke" type="submit" value="POKE-E-GO!">
+        <label for="poke-input">Choose Your Pokemon</label>
+        <input type="text" id="poke-input"><br>
+        <input id="select-poke" type="submit" value="POKE-E-GO!">
     </form>
-  
-    <div class="example-container" id="poke-div">
-      <div class="example-row">
-        <div class="example-content-main">Main content</div>
-        <div class="example-content-secondary">Secondary content</div>
-      </div>
-    </div>
-    <div id="poke-div"></div>
-  
-  </body>
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script>
-    function searchPokemon(poke) {
-    
-      let queryURL = "https://api.pokemontcg.io/v1/cards?name=" + poke;
-      let queryURL2 = "https://pokeapi.co/api/v2/pokemon/" + poke;
-      $.ajax({
-        url: queryURL,
-        method: "GET", headers: {"Count": 1000},
-      }).then(function(response) {
-          console.log(response);
-  
-        
-        let pokeName = $("<h1>").text(response.cards[0].name);
-          console.log(response.cards[0].name);
-        let pokeURL = $("<img>").attr("src", response.cards[0].imageUrl);
-          console.log("src", response.cards[0].imageUrl);
-        let pokeMaker = $("<h2>").text(response.cards[0].artist);
-          console.log(response.cards[0].artist);
-        let pokeDex = $("<h2>").text(response.cards[0].nationalPokedexNumber);
-          console.log(response.cards[0].nationalPokedexNumber);
-        let howRare = $("<h2>").text(response.cards[0].rarity);
-          console.log(response.cards[0].rarity);
-        let pokeSeries = $("<h3>").text(response.cards[0].series);
-          console.log(response.cards[0].series);
-        let pokeSet = $("<h3>").text(response.cards[0].set);
-          console.log(response.cards[0].set);
+    <div class="card bg-transparent card text-white mb-3" style="max-width: 1280px;">
+        <div class="row">
+            <div class="col-md-2 pokeCards"></div>
+            <div class="col-md-2 pokeCards"></div>
+            <div class="col-md-2 pokeCards"></div>
+            <div class="col-md-2 pokeCards"></div>
+            <div class="col-md-2 pokeCards"></div>
+            <!-- this is where the images get appended to -->
+            <!-- <img src="" class="card-img" alt="pokemoncard"> -->
 
-          
-  
-        
-        $("poke-div").empty();
-        $("#poke-div").append(pokeURL, pokeName, pokeMaker, pokeDex, howRare, pokeSeries, pokeSet);
-      })
-      $.ajax({
-        url: queryURL2,
-        method: "GET", headers: {"Count": 1000},
-      }).then(function(response) {
-        console.log(response.sprites.front_default)
-        let pokeSprite = $("<img>").attr("src", response.sprites.front_default);
-        $("poke-div").empty();
-        $("#poke-div").append(pokeSprite)
-    })
-  }
-     $("#select-poke").on("click", function(event) {
-          event.preventDefault();
-      
-      let inputPoke = $("#poke-input").val().trim();
-  
-      
-      searchPokemon(inputPoke);
+            <!-- <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">This is the pokemon:</h5>
+                    <p class="card-text">This is where your pokemon will appear.</p>
+
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <div class="example-container" id="poke-div">
+        <div class="example-row">
+            <div class="example-content-main">Main content</div>
+            <div class="example-content-secondary">Secondary content</div>
+        </div>
+    </div>
+    <footer class="d-flex justify-content-center">
+
+    </footer>
+    <!-- <div id="poke-div"></div> -->
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    function searchPokemon(poke) {
+
+        let queryURL = "https://api.pokemontcg.io/v1/cards?name=" + poke;
+        let queryURL2 = "https://pokeapi.co/api/v2/pokemon/" + poke;
+        $.ajax({
+            url: queryURL,
+            method: "GET",
+            headers: {
+                "Count": 1000
+            },
+        }).then(function(response) {
+            // console.log(response);
+            for (let i = 0; i < 2; i++) {
+                let url = response.cards[i].imageUrl
+                let pokeURL = $(".pokeCards").append('<img src="' + url + '" class="card-img" alt="pokemoncard"> <h3>' + response.cards[i].series + '</h3> <h3>' + response.cards[i].set + '</h3>')
+                console.log(url + 'test')
+                    // let pokeURL = $("img").attr("src", response.cards[i].imageUrl);
+                    // console.log("src", response.cards[i].imageUrl);
+
+                let pokeName = $("<h1>").text(response.cards[i].name);
+                console.log(response.cards[i].name);
+                let pokeMaker = $("<h2>").text(response.cards[i].artist);
+                console.log(response.cards[i].artist);
+                let pokeDex = $("<h2>").text(response.cards[i].nationalPokedexNumber);
+                console.log(response.cards[i].nationalPokedexNumber);
+                let howRare = $("<h2>").text(response.cards[i].rarity);
+                console.log(response.cards[i].rarity);
+                // let pokeSeries = $("<h3>").text(response.cards[i].series);
+                console.log(response.cards[i].series);
+                // let pokeSet = $("<h3>").text(response.cards[i].set);
+                console.log(response.cards[i].set);
+
+                // $(".card-text").append(pokeName, pokeMaker, pokeDex, howRare);
+                // $(".card-img").append(pokeURL);
+            }
+
+
+
+            // $(".card-text").empty();
+
+        })
+        $.ajax({
+            url: queryURL2,
+            method: "GET",
+            headers: {
+                "Count": 1000
+            },
+        }).then(function(response) {
+            console.log(response.sprites.front_default)
+            let pokeSprite = $("<img>").attr("src", response.sprites.front_default);
+            $("poke-div").empty();
+            // $(".card-footer").append(pokeSprite)
+            $("footer").append(pokeSprite)
+
+        })
+    }
+    $("#select-poke").on("click", function(event) {
+        event.preventDefault();
+
+        let inputPoke = $("#poke-input").val().trim();
+
+
+        searchPokemon(inputPoke);
     });
-  </script>
-  
-  </html>
-  
+</script>
+
+</html>
+
 
 </html>
