@@ -1,7 +1,29 @@
 body {
-    background-image: url("./pokewebbackground.png")
+    background-image: url("./pokewebbackground.png");
+    text-align: center;
 }
 
 footer {
+    align-content: center;
+}
+
+#select-poke {
+    background-color: black;
+    color: white;
+    align-content: center;
+}
+
+#poke-form {
+    color: white;
+    align-content: center;
+}
+
+label {
+    color: whitesmoke;
+}
+
+#poke-input {
+    background-color: black;
+    color: white;
     align-content: center;
 }
