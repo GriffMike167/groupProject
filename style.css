@@ -1,7 +1,19 @@
 body {
-    background-image: url("./pokewebbackground.png")
+    background-image: url("./pokewebbackground.png");
+    
+    text-align: center;
 }
-
 footer {
     align-content: center;
+}
+img {
+    cursor:pointer
+}
+text {
+    color: white;
+}
+#header {
+    background-image: url("pokemonLogo.png");
+    background-image: center;
+
 }
