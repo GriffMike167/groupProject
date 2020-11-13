@@ -1,6 +1,7 @@
 body {
     background-image: url("./pokewebbackground.png");
     text-align: center;
+    color: white;
 }
 footer {
     align-content: center;
@@ -16,3 +17,18 @@ text {
     background-image: center;
 
 }
+#poke-input {
+    background-color: black;
+    color: white;
+    align-content: center;
+}
+@media screen and (max-width: 992px) {
+    body {
+      background-color: whitesmoke;
+    }
+  }
+@media screen and (max-width: 380x) {
+    body {
+      background-color: whitesmoke;
+    }
+  }
