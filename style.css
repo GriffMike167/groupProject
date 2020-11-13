@@ -32,3 +32,7 @@ text {
       background-color: whitesmoke;
     }
   }
+.example-container {
+    color: #B74C4C;
+    font-weight: bolder;
+}

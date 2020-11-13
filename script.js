@@ -5,7 +5,7 @@ function searchPokemon(poke) {
     
 
     $.ajax({
-        url: queryURL,   //     $(".pokeCards").empty();
+        url: queryURL,   
         method: "GET",
         headers: {
             "Count": 1000
@@ -79,24 +79,21 @@ pokeHpDiv.textContent = $("<p>").text=JSON.stringify(("Health: " + response.card
 })
       for (let i = 0; i <1; i++) {
         
-            let url = response.cards[i].imageUrl
-            let pokeURL0 = $(".pokeCards1").append('<img src="' + response.cards[0].imageUrl+ '" class="card-img" alt="pokemoncard"> <p>')
-
-            let pokeURL1 = $(".pokeCards2").append('<img src="' + response.cards[1].imageUrl+ '" class="card-img" alt="pokemoncard"> <p>')
-            let pokeURL2 = $(".pokeCards3").append('<img src="' + response.cards[2].imageUrl+ '" class="card-img" alt="pokemoncard"> <p>')
-            let pokeURL3 = $(".pokeCards4").append('<img src="' + response.cards[3].imageUrl+ '" class="card-img" alt="pokemoncard"> <p>')
-            let pokeURL4 = $(".pokeCards5").append('<img src="' + response.cards[4].imageUrl+ '" class="card-img" alt="pokemoncard"> <p>')
-            let pokeURL5 = $(".pokeCards6").append('<img src="' + response.cards[5].imageUrl+ '" class="card-img" alt="pokemoncard"> <p>')
             
-            //   $('#pokeClick0').on("click", function(){
-            // for(var i=0;i<response.cards[0].names.length;i++)
-            // {
-            // let pokeWrite = response.cards[0].names[i];
-            // let pokeWritting = $("#pokeInfoDiv").append('<p>'+ "Name: "+ pokeWrite + "</p>");
-            // console.log()
-            // pokeInfoDiv.append(pokeWritting);
-            //   })
+            $(".pokeCards1").empty();
+            $(".pokeCards1").append('<img src="' + response.cards[0].imageUrl+ '" class="card-img" alt="pokemoncard"> <p>')
+            $(".pokeCards2").empty();
+            $(".pokeCards2").append('<img src="' + response.cards[1].imageUrl+ '" class="card-img" alt="pokemoncard"> <p>')
+            $(".pokeCards3").empty();
+            $(".pokeCards3").append('<img src="' + response.cards[2].imageUrl+ '" class="card-img" alt="pokemoncard"> <p>')
+            $(".pokeCards4").empty();
+            $(".pokeCards4").append('<img src="' + response.cards[3].imageUrl+ '" class="card-img" alt="pokemoncard"> <p>')
+            $(".pokeCards5").empty();
+            $(".pokeCards5").append('<img src="' + response.cards[4].imageUrl+ '" class="card-img" alt="pokemoncard"> <p>')
+            $(".pokeCards6").empty();
+            $(".pokeCards6").append('<img src="' + response.cards[5].imageUrl+ '" class="card-img" alt="pokemoncard"> <p>')
             
+          
               
             }
           })
@@ -108,7 +105,7 @@ pokeHpDiv.textContent = $("<p>").text=JSON.stringify(("Health: " + response.card
             "Count": 1000
         },
     }).then(function(response) {
-        console.log(response.sprites.front_default)
+        
         let pokeSprite = $("<img>").attr("src", response.sprites.other.dream_world.front_default);
         $("footer").empty();
         $("footer").append(pokeSprite)
@@ -129,3 +126,13 @@ pokeHpDiv.textContent = $("<p>").text=JSON.stringify(("Health: " + response.card
 
     searchPokemon(inputPoke);
 });
+
+//   //   $('#pokeClick0').on("click", function(){
+            // for(var i=0;i<response.cards[0].names.length;i++)
+            // {
+            // let pokeWrite = response.cards[0].names[i];
+            // let pokeWritting = $("#pokeInfoDiv").append('<p>'+ "Name: "+ pokeWrite + "</p>");
+            // console.log()
+            // pokeInfoDiv.append(pokeWritting);
+            //   })
+            
