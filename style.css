@@ -1,29 +1,34 @@
 body {
     background-image: url("./pokewebbackground.png");
     text-align: center;
+    color: white;
 }
-
 footer {
     align-content: center;
 }
-
-#select-poke {
-    background-color: black;
+img {
+    cursor:pointer
+}
+text {
     color: white;
-    align-content: center;
 }
+#header {
+    background-image: url("pokemonLogo.png");
+    background-image: center;
 
-#poke-form {
-    color: white;
-    align-content: center;
 }
-
-label {
-    color: whitesmoke;
-}
-
 #poke-input {
     background-color: black;
     color: white;
     align-content: center;
 }
+@media screen and (max-width: 992px) {
+    body {
+      background-color: whitesmoke;
+    }
+  }
+@media screen and (max-width: 380x) {
+    body {
+      background-color: whitesmoke;
+    }
+  }
