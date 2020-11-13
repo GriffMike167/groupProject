@@ -24,12 +24,12 @@
     </form>
     <div class="card bg-transparent card text-white mb-3" style="max-width: 1280px;">
         <div class="row">
-            <div class="pokeCards0"></div>  
-            <div class="pokeCards1"></div>
-            <div class="pokeCards2"></div>
-            <div class="pokeCards3"></div>
-            <div class="pokeCards4"></div>
-            <div class="pokeCards5"></div>
+            <div class="col-sm-2 pokeCards1"></div>  
+            <div class="col-sm-2 pokeCards2"></div>
+            <div class="col-sm-2 pokeCards3"></div>
+            <div class="col-sm-2 pokeCards4"></div>
+            <div class="col-sm-2 pokeCards5"></div>
+            <div class="col-sm-2 pokeCards6"></div>
        
                 <div class="col-md-8">
                     <div class="card-body">
@@ -40,12 +40,16 @@
                 </div>
             </div>
         </div>
-        <div class="example-container" id="pokeInfoDiv">
-            <div class="example-row">
+        <div class="example-container" id="pokeNameDiv"></div>
+        <div class="example-container" id="pokeAttackDiv"></div>
+        <div class="example-container" id="pokeSeriesDiv"></div>
+        <div class="example-container" id="pokeWeaknessDiv"></div>
+        <div class="example-container" id="pokeHpDiv"></div>
+            <!-- <div class="example-row">
                 <div class="example-content-main"></div>
                 <div class="example-content-secondary"></div>
             </div>
-        </div>
+        </div> -->
           <footer class="d-flex justify-content-center">
         </footer>
 
@@ -53,106 +57,9 @@
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-    function searchPokemon(poke) {
+<script src="script.js"></script>
+    
 
-        let queryURL = "https://api.pokemontcg.io/v1/cards?name=" + poke;
-        let queryURL2 = "https://pokeapi.co/api/v2/pokemon/" + poke;
-
-
-        $.ajax({
-            url: queryURL,   //     $(".pokeCards").empty();
-            method: "GET",
-            headers: {
-                "Count": 1000
-            },
-        }).then(function(response) {
-          for (let i = 0; i <5; i++) {
-            
-                let url = response.cards[i].imageUrl
-                let pokeURL0 = $(".pokeCards0").append('<img src="' + response.cards[i].imageUrl+ '" class="card-img" alt="pokemoncard"> <p>')
-
-                // let pokeURL1 = $(".pokeCards1").append('<img src="' + response.cards[1].imageUrl+ '" class="card-img" alt="pokemoncard"> <p>')
-                // let pokeURL2 = $(".pokeCards2").append('<img src="' + response.cards[2].imageUrl+ '" class="card-img" alt="pokemoncard"> <p>')
-                // let pokeURL3 = $(".pokeCards3").append('<img src="' + response.cards[3].imageUrl+ '" class="card-img" alt="pokemoncard"> <p>')
-                // let pokeURL4 = $(".pokeCards4").append('<img src="' + response.cards[4].imageUrl+ '" class="card-img" alt="pokemoncard"> <p>')
-                // let pokeURL5 = $(".pokeCards5").append('<img src="' + response.cards[5].imageUrl+ '" class="card-img" alt="pokemoncard"> <p>')
-                
-                //   $('#pokeClick0').on("click", function(){
-                // for(var i=0;i<response.cards[0].names.length;i++)
-                // {
-                // let pokeWrite = response.cards[0].names[i];
-                // let pokeWritting = $("#pokeInfoDiv").append('<p>'+ "Name: "+ pokeWrite + "</p>");
-                // console.log()
-                // pokeInfoDiv.append(pokeWritting);
-                //   })
-                  $('#pokeClick1').on("click", function(){
-
-                  
-                  pokeInfoDiv.textContent = "This is some information about this card";
-
-
-                  })
-                  $('#pokeClick2').on("click", function(){
-
-                  
-                  pokeInfoDiv.textContent = "This is  this card some information";
-
-
-                  })
-                  $('#pokeClick3').on("click", function(){
-
-                  
-                  pokeInfoDiv.textContent = "This is some diffrent information";
-
-
-                  })
-                  $('#pokeClick4').on("click", function(){
-
-                  
-                  pokeInfoDiv.textContent = "This is alot of carzy information";
-
-
-                  })
-                  $('#pokeClick5').on("click", function(){
-
-                  
-                  pokeInfoDiv.textContent = "This is cant be all the information";
-
-
-                  })
-                }
-              })
-
-            $.ajax({
-            url: queryURL2,
-            method: "GET",
-            headers: {
-                "Count": 1000
-            },
-        }).then(function(response) {
-            console.log(response.sprites.front_default)
-            let pokeSprite = $("<img>").attr("src", response.sprites.other.dream_world.front_default);
-            $("footer").empty();
-            $("footer").append(pokeSprite)
-
-        })
-
-
-
-        console.log("Surprise! Its a hidden %cPokemon Logo", "color: yellow; font-weight: 900; background-color: blue;padding: 2px");
-
-    }
-
-      $("#select-poke").on("click", function(event) {
-        event.preventDefault();
-
-        let inputPoke = $("#poke-input").val().trim();
-
-
-        searchPokemon(inputPoke);
-    });
-</script>
 
 </html>
 
