@@ -24,12 +24,12 @@
     </form>
     <div class="card bg-transparent card text-white mb-3" style="max-width: 1280px;">
         <div class="row">
-            <div id="pokeClick0" class="col-md-2 pokeCards0"></div>  
-            <div id="pokeClick1" class="col-md-2 pokeCards1"></div>
-            <div id="pokeClick2" class="col-md-2 pokeCards2"></div>
-            <div id="pokeClick3" class="col-md-2 pokeCards3"></div>
-            <div id="pokeClick4" class="col-md-2 pokeCards4"></div>
-            <div id="pokeClick5" class="col-md-2 pokeCards5"></div>
+            <div class="pokeCards0"></div>  
+            <div class="pokeCards1"></div>
+            <div class="pokeCards2"></div>
+            <div class="pokeCards3"></div>
+            <div class="pokeCards4"></div>
+            <div class="pokeCards5"></div>
        
                 <div class="col-md-8">
                     <div class="card-body">
@@ -67,10 +67,11 @@
                 "Count": 1000
             },
         }).then(function(response) {
-          for (let i = 0; i <35; i++) {
+          for (let i = 0; i <5; i++) {
             
                 let url = response.cards[i].imageUrl
                 let pokeURL0 = $(".pokeCards0").append('<img src="' + response.cards[i].imageUrl+ '" class="card-img" alt="pokemoncard"> <p>')
+
                 // let pokeURL1 = $(".pokeCards1").append('<img src="' + response.cards[1].imageUrl+ '" class="card-img" alt="pokemoncard"> <p>')
                 // let pokeURL2 = $(".pokeCards2").append('<img src="' + response.cards[2].imageUrl+ '" class="card-img" alt="pokemoncard"> <p>')
                 // let pokeURL3 = $(".pokeCards3").append('<img src="' + response.cards[3].imageUrl+ '" class="card-img" alt="pokemoncard"> <p>')
